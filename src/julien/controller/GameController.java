@@ -29,6 +29,10 @@ public class GameController implements Initializable {
     public  GridPane gridPane_1;
     @FXML
     public Button button_newgame;
+    @FXML
+    public Button button_reset;
+    @FXML
+    public Button button_quit;
 
 
     @Override
@@ -42,7 +46,14 @@ public class GameController implements Initializable {
             updateBoard();
             updatePlayer();
         }));
-
+        button_reset.setOnAction((actionEvent -> {
+            if (board.getCanReset()) {
+                board.reset();
+                updateBoard();
+                updatePlayer();
+            }
+        }));
+        button_quit.setOnAction((actionEvent ->  System.exit(0)));
 
     }
     @FXML
@@ -57,10 +68,7 @@ public class GameController implements Initializable {
 
 
     }
-    @FXML
-    private void clickGrid(MouseEvent event) throws Exception {
-
-    }
+  
     private void updatePlayer(){
         turn_player.setText((board.getTurn() == 'w' ? "Blancs" : "Noirs"));
     }

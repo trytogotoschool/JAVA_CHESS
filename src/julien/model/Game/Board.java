@@ -2,6 +2,8 @@ package julien.model.Game;
 
 import julien.model.Pieces.Piece;
 
+import java.util.HashMap;
+
 
 public class Board {
 
@@ -10,14 +12,15 @@ public class Board {
      public  Piece[] board;
      private char turn;
      private int firstCase;
-     private int old_first;
-     private int old_second;
+     private Piece[] old_board;
+     private boolean canReset;
 
     public Board(){
         board = new Piece[64];
         createBoard();
         turn = 'w';
         firstCase = -1;
+        canReset = false;
 
 
     }
@@ -56,24 +59,35 @@ public class Board {
              } else {
                 changePiece(value);
              }
-
         }
     }
+
     public char getTurn() {
         return  turn;
     }
     private  void changePiece(int value) {
 
+        old_board = board.clone();
         board[value] = board[firstCase];
         board[firstCase] = null;
         firstCase = -1;
-        turn = (turn == 'w' ? 'b' : 'w');
+        canReset =  true;
+        updatePlayer();
 
     }
-    private  void setHisto() {
+    public void updatePlayer() {
+        turn = (turn == 'w' ? 'b' : 'w');
+    }
 
+    public void reset() {
+        updatePlayer();
+        board = old_board.clone();
+        canReset = false;
     }
     public Piece[] getBoard() {
         return board;
+    }
+    public Boolean getCanReset() {
+        return canReset;
     }
  }
