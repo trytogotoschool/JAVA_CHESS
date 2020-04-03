@@ -14,7 +14,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/julien/vue/vueplateau.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-            primaryStage.setTitle("ColorFX");
+            primaryStage.setTitle("Jeu d'echec");
             primaryStage.setScene(scene);
             primaryStage.show();
         }

@@ -68,7 +68,7 @@ public class GameController implements Initializable {
 
 
     }
-  
+
     private void updatePlayer(){
         turn_player.setText((board.getTurn() == 'w' ? "Blancs" : "Noirs"));
     }

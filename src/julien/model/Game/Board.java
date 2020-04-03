@@ -2,8 +2,6 @@ package julien.model.Game;
 
 import julien.model.Pieces.Piece;
 
-import java.util.HashMap;
-
 
 public class Board {
 
